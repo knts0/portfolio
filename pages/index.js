@@ -10,12 +10,16 @@ export default function Home() {
 
       <main>
         <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Kana Otawara
         </h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          Webアプリケーションエンジニア
         </p>
+
+        <h2>
+          職務経歴
+        </h2>
 
         <div className="grid">
           <a href="https://nextjs.org/docs" className="card">
@@ -46,17 +50,18 @@ export default function Home() {
             </p>
           </a>
         </div>
+
+        <h2>
+          制作物
+        </h2>
       </main>
 
       <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className="logo" />
-        </a>
+        <div>© Kana Otawara 2021</div>
+        {/* <img src="/vercel.svg" alt="Vercel" className="logo" /> */}
+        <div>
+          
+        </div>
       </footer>
 
       <style jsx>{`
@@ -83,7 +88,7 @@ export default function Home() {
           height: 100px;
           border-top: 1px solid #eaeaea;
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
         }
 
