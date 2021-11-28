@@ -1,20 +1,15 @@
 import Head from 'next/head'
+import { getTechbookData } from '../../fetchData/getTechbookData';
 
-export default function Home() {
-  const books = [
-    {
-      title: '実践Scala入門',
-      link: 'https://www.amazon.co.jp/dp/4297101416'
-    },
-    {
-      title: 'Scalaスケーラブルプログラミング',
-      link: 'https://www.amazon.co.jp/dp/4844381490'
-    },
-    {
-      title: 'SQL実践入門',
-      link: 'https://www.amazon.co.jp/dp/4774173010'
-    },
-  ]
+export type Techbook = {
+  title: string,
+  link: string,
+  tags: string[],
+  comment: string,
+}
+
+const SSRPage = ({ data }) => {
+  const books: Techbook[] = data;
 
   return (
     <div className="container">
@@ -33,7 +28,7 @@ export default function Home() {
         </p>
 
         <ul>
-          { books.map(book => <li>{book.title}</li>) }
+          { books.map(book => <li>{book.title}   <a href={book.link} target='_blank'>[Amazon]</a></li>) }
         </ul>
       </main>
 
@@ -84,7 +79,7 @@ export default function Home() {
         }
 
         a {
-          color: inherit;
+          color: #0070f3;
           text-decoration: none;
         }
 
@@ -153,3 +148,13 @@ export default function Home() {
     </div>
   )
 }
+
+export const getServerSideProps = async () => {
+  const techbooks = await getTechbookData();
+  if (!techbooks) {
+    return { notFound: true };
+  }
+  return { props: { data: techbooks } };
+};
+
+export default SSRPage;
