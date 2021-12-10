@@ -1,5 +1,6 @@
 import { getTechbook } from '../../../fetchData/getTechbookData';
 import { Techbook } from '../list';
+import { Badge, Box, Heading } from '@chakra-ui/react'
 
 const Detail = ({ data }) => {
 
@@ -7,15 +8,25 @@ const Detail = ({ data }) => {
 
   return (
     <main>
-      <h1>{ book.title }</h1>
+      <Box>
+        <Heading as="h1">{ book.title }</Heading>
 
-      <div>{ book.tags.map(tag => <li>{tag}</li>) }</div>
+        <Box>
+          { book.tags.map( tag => {
+            return (
+              <Badge borderRadius='full' px='2'>
+                {tag}
+              </Badge>
+            )
+          })}
+        </Box>
 
-      <div>
-        <a href={ book.link } target='_blank'>Amazonリンク</a>
-      </div>
+        <div>
+          <a href={ book.link } target='_blank'>Amazonリンク</a>
+        </div>
 
-      <div>{ book.comment }</div>
+        <div>{ book.comment }</div>
+      </Box>
     </main>
   )
 }
