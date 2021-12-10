@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { getTechbookData } from '../../fetchData/getTechbookData';
+import { getTechbookList } from '../../fetchData/getTechbookData';
 
 export type Techbook = {
   title: string,
@@ -150,7 +150,7 @@ const SSRPage = ({ data }) => {
 }
 
 export const getServerSideProps = async () => {
-  const techbooks = await getTechbookData();
+  const techbooks = await getTechbookList();
   if (!techbooks) {
     return { notFound: true };
   }

@@ -1,6 +1,6 @@
 import admin from '../firebase/nodeApp';
 
-export const getTechbookData = async () => {
+export const getTechbookList = async () => {
   // create db
   const db = admin.firestore();
 
