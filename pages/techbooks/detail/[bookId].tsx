@@ -1,18 +1,33 @@
-import { useRouter } from 'next/router';
+import { getTechbook } from '../../../fetchData/getTechbookData';
+import { Techbook } from '../list';
 
-const Detail = () => {
-  const router = useRouter();
-  const { bookId } = router.query;
+const Detail = ({ data }) => {
+
+  const book: Techbook = data
 
   return (
     <main>
-      <h1>
-        ここに技術書の名前
-      </h1>
+      <h1>{ book.title }</h1>
 
-      <div>{ bookId }</div>
+      <div>{ book.tags.map(tag => <li>{tag}</li>) }</div>
+
+      <div>
+        <a href={ book.link } target='_blank'>Amazonリンク</a>
+      </div>
+
+      <div>{ book.comment }</div>
     </main>
   )
 }
+
+export const getServerSideProps = async (context) => {
+  const { bookId } = context.params;
+  
+  const techbook = await getTechbook(bookId);
+  if (!techbook) {
+    return { notFound: true };
+  }
+  return { props: { data: techbook } };
+};
 
 export default Detail;
