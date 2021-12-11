@@ -2,6 +2,7 @@ import { getTechbook } from '../../../fetchData/getTechbookData';
 import { Techbook } from '../list';
 import {
   Box,
+  Flex,
   Heading,
   Tag
 } from '@chakra-ui/react'
@@ -12,25 +13,37 @@ const Detail = ({ data }) => {
 
   return (
     <main>
-      <Box>
-        <Heading as="h1">{ book.title }</Heading>
+      <Flex>
+        <Box mx="auto" pt="8">
+          <Heading as="h1">{ book.title }</Heading>
 
-        <Box>
-          { book.tags.map( tag => {
-            return (
-              <Tag size='md'>
-                {tag}
-              </Tag>
-            )
-          })}
+          <Box mt="4">
+            { book.tags.map( tag => {
+              return (
+                <Tag size='md'>
+                  {tag}
+                </Tag>
+              )
+            })}
+          </Box>
+
+          <Box bg="white" rounded="md" p={4} shadow="lg" mt="4">
+            ここにテキストが入ります
+            <br />
+            ここにテキストが入ります
+            <br />
+            ここにテキストが入ります
+            <br />
+            ここにテキストが入ります
+          </Box>
+
+          <Box mt="4">
+            <a href={ book.link } target='_blank'>Amazonリンク</a>
+          </Box>
+
+          <div>{ book.comment }</div>
         </Box>
-
-        <div>
-          <a href={ book.link } target='_blank'>Amazonリンク</a>
-        </div>
-
-        <div>{ book.comment }</div>
-      </Box>
+      </Flex>
     </main>
   )
 }
