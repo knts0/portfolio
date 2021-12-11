@@ -1,7 +1,9 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import { getTechbookList } from '../../fetchData/getTechbookData';
 
 export type Techbook = {
+  id: number,
   title: string,
   link: string,
   tags: string[],
@@ -28,7 +30,14 @@ const SSRPage = ({ data }) => {
         </p>
 
         <ul>
-          { books.map(book => <li>{book.title}   <a href={book.link} target='_blank'>[Amazon]</a></li>) }
+          { books.map(book => 
+            <li>
+              <Link
+                href="/techbooks/detail/[bookId]"
+                as={`/techbooks/detail/${book.id}`}
+              >{book.title}</Link>
+            </li>
+          ) }
         </ul>
       </main>
 
