@@ -1,6 +1,10 @@
 import { getTechbook } from '../../../fetchData/getTechbookData';
 import { Techbook } from '../list';
-import { Badge, Box, Heading } from '@chakra-ui/react'
+import {
+  Box,
+  Heading,
+  Tag
+} from '@chakra-ui/react'
 
 const Detail = ({ data }) => {
 
@@ -14,9 +18,9 @@ const Detail = ({ data }) => {
         <Box>
           { book.tags.map( tag => {
             return (
-              <Badge borderRadius='full' px='2'>
+              <Tag size='md'>
                 {tag}
-              </Badge>
+              </Tag>
             )
           })}
         </Box>
