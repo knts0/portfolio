@@ -35,7 +35,9 @@ const SSRPage = ({ data }) => {
               <Link
                 href="/techbooks/detail/[bookId]"
                 as={`/techbooks/detail/${book.id}`}
-              >{book.title}</Link>
+              >
+                {book.title}
+              </Link>
             </li>
           ) }
         </ul>
