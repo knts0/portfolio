@@ -9,7 +9,10 @@ export const getTechbookList = async () => {
 
   let books = []
   techbookCollectionQuerySnapshot.forEach(doc => {
-    books.push(doc.data());
+    books.push({
+      id: doc.id,
+      ...doc.data()
+    });
   });
 
   return books;
