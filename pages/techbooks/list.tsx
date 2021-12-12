@@ -1,6 +1,9 @@
 import {
   Box,
   Heading,
+  HStack,
+  StackDivider,
+  Tag,
   VStack
 } from '@chakra-ui/react';
 import Link from 'next/link'
@@ -44,20 +47,36 @@ const SSRPage = ({ data }) => {
         <Box
           bg="white"
           rounded="md"
-          shadow="lg"
+          shadow="md"
           p={4}
         >
           <VStack
             alignItems="flex-start"
+            divider={<StackDivider borderColor='gray.200' />}
           >
             { books.map(book =>
               <Box key={book.id}>
-                <Link
-                  href="/techbooks/detail/[bookId]"
-                  as={`/techbooks/detail/${book.id}`}
-                >
-                  {book.title}
-                </Link>
+                <Box mb={2}>
+                  <Link
+                    href="/techbooks/detail/[bookId]"
+                    as={`/techbooks/detail/${book.id}`}
+                  >
+                    {book.title}
+                  </Link>
+                </Box>
+                <Box>
+                  <HStack
+                    spacing={2}
+                  >
+                    { book.tags.map( tag => {
+                      return (
+                        <Tag key={tag} size='md'>
+                          {tag}
+                        </Tag>
+                      )
+                    })}
+                  </HStack>
+                </Box>
               </Box>
             ) }
           </VStack>
