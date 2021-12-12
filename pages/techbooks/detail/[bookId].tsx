@@ -20,7 +20,7 @@ const Detail = ({ data }) => {
           <Box mt="4">
             { book.tags.map( tag => {
               return (
-                <Tag size='md'>
+                <Tag key={tag} size='md'>
                   {tag}
                 </Tag>
               )
