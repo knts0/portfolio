@@ -31,8 +31,11 @@ const Header = () => {
       <Heading
         as="h1"
         color="teal.100"
+        _hover={{ cursor: "pointer" }}
       >
-        Kana Otawara
+        <NextLink href="/">
+          Kana Otawara
+        </NextLink>
       </Heading>
       <Spacer />
       <HStack
