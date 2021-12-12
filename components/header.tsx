@@ -14,8 +14,6 @@ class Header extends React.Component {
         as="header"
         alignItems="flex-end"
         bg="teal.400"
-        position="fixed"
-        top={0}
         width="full"
         shadow="md"
         py={4}
