@@ -31,7 +31,7 @@ const SSRPage = ({ data }) => {
 
         <ul>
           { books.map(book => 
-            <li>
+            <li key={book.id}>
               <Link
                 href="/techbooks/detail/[bookId]"
                 as={`/techbooks/detail/${book.id}`}
